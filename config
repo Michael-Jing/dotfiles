@@ -204,10 +204,10 @@ bindsym $mod+minus scratchpad show
 bar {
 
         status_command i3status
-	colors { 
-                statusline #AAAAAA
-                background #333333
-                focused_workspace $gray2 $gray2 #FFFFFF
-                inactive_workspace $gray1 $gray1 #AAAAAA
-        }
+	#colors { 
+    #            statusline #AAAAAA
+    #            background #333333
+    #            focused_workspace $gray2 $gray2 #FFFFFF
+    #            inactive_workspace $gray1 $gray1 #AAAAAA
+    #    }
 }
