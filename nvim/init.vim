@@ -15,21 +15,51 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Yggdroot/indentLine'
   " syntax check
   Plug 'w0rp/ale'
+"nerd tree"
+  Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+
+
   " Autocomplete
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
   Plug 'ncm2/ncm2-jedi'
+  Plug 'ncm2/ncm2-tmux'
+  Plug 'ncm2/ncm2-racer'
+  Plug 'vim-scripts/AutoClose'
+"   Plug 'Townk/vim-autoclose'
+
   " Formater
   Plug 'Chiel92/vim-autoformat'
   Plug 'junegunn/seoul256.vim'
-  Plug 'vim-scripts/AutoClose'
+"  Plug 'cohama/lexima.vim'
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-commentary'
   Plug 'jpalardy/vim-slim'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'rking/ag.vim'
+  "Rust Language
+  Plug 'rust-lang/rust.vim'
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+  Plug 'lepture/vim-jinja'
+  " (Optional) Multi-entry selection UI.
+
+  Plug 'junegunn/fzf'
+  Plug 'christoomey/vim-tmux-navigator'
+
+  ""Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " debbugger "
+
+  " "Plug 'idanarye/vim-vebugger'
+  " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+  " "Plug 'zchee/deoplete-jedi'
+
 "  Plug 'jiangmiao/auto-pairs'
 "Plug 'scrooloose/nerdtree'                " Project and file navigation
 "Plug 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
@@ -58,7 +88,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
 
 "-------------------=== Python ===----------------------------------
-Plug 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
+" Plug 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
 " Plug 'jmcantrell/vim-virtualenv'
 
 "-------------------=== Go ===---------------------------------------
@@ -81,6 +111,18 @@ syntax enable
 let base16colorspace=256
 colorscheme base16-gruvbox-dark-hard
 set background=dark
+
+" rust lang"
+let g:autofmt_autosave = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['pyls'],
+    \ }
+noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
+noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
+noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
+
 
 " True Color Support if itso available in terminal
 if has("termguicolors")
@@ -114,9 +156,12 @@ augroup NCM2
 	autocmd BufEnter * call ncm2#enable_for_buffer()
 	" :help Ncm2PopupOpen nfor more information
 	set completeopt=noinsert,menuone,noselect
-        inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 augroup END
 
+" map enter to go the next line first"$
+imap <expr> <CR> ((col(".") != col("$") - 1) ? "\<CR>" : "\<Esc>$a")
+" "autocmd FileType python map <buffer> <CR> <Esc>$o
 
 " ale
 let g:ale_fixers = {
@@ -145,7 +190,7 @@ let g:slim_python_ipython = 1
 let g:slim_target = "neovim"
 
 " ctrlp configuration
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<c-l>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -174,3 +219,81 @@ endif
 " bind \ (backward slash) to grep shortcut
 " "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
+
+ " Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Nerdtree git plugin config"
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+" Nerdtree "
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+
+map <C-b> :NERDTreeToggle<CR>
+
+" close vim if the only window left open is a NERDTree"
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+map <F5> :call CompileRunGcc()<CR>
+    func! CompileRunGcc()
+        exec "w"
+        if &filetype == 'c'
+            exec "!g++ % -o %<"
+            exec "!time ./%<"
+        elseif &filetype == 'cpp'
+            exec "!g++ % -o %<"
+            exec "!time ./%<"
+        elseif &filetype == 'java'
+            exec "!javac %"
+            exec "!time java %<"
+        elseif &filetype == 'sh'
+            :!time bash %
+        elseif &filetype == 'python'
+            exec "!time python %"
+        elseif &filetype == 'html'
+            exec "!firefox % &"
+        elseif &filetype == 'go'
+    "        exec "!go build %<"
+            exec "!time go run %"
+        elseif &filetype == 'mkd'
+            exec "!~/.vim/markdown.pl % > %.html &"
+            exec "!firefox %.html &"
+        endif
+    endfunc
+
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
+
+" enable basic auto close rules for lexima
+let g:lexima_enable_basic_rules = 1
+let g:lexima_enable_newline_rules = 1
+let g:lexima_enable_endwise_rules = 1
+
+" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+
