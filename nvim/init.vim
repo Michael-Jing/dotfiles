@@ -51,7 +51,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " (Optional) Multi-entry selection UI.
 
   Plug 'junegunn/fzf'
-  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'Michael-Jing/vim-tmux-navigator'
 
   ""Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   " debbugger "
@@ -309,5 +309,3 @@ map <Leader>vi :VimuxInspectRunner<CR>
 "nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 2
 let g:tmux_navigator_disable_when_zoomed = 1
-
-
