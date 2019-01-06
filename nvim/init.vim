@@ -100,7 +100,6 @@ call plug#end()
 filetype on
 filetype plugin on
 filetype plugin indent on
-
 set nu
 set relativenumber
 set cursorline
@@ -190,7 +189,7 @@ let g:slim_python_ipython = 1
 let g:slim_target = "neovim"
 
 " ctrlp configuration
-let g:ctrlp_map = '<c-l>'
+let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -296,4 +295,19 @@ map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
 map <Leader>vi :VimuxInspectRunner<CR>
+"nnoremap <C-T> <C-W><C-J>
+"nnoremap <C-N> <C-W><C-K>
+"nnoremap <C-S> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
+
+" Tmux vim navigation
+"let g:tmux_navigator_no_mappings = 1
+"nnoremap <silent> {c-h} :TmuxNavigateLeft<cr>
+"nnoremap <silent> {c-t} :TmuxNavigateDown<cr>
+"nnoremap <silent> {c-n} :TmuxNavigateUp<cr>
+"nnoremap <silent> {c-s} :TmuxNavigateRight<cr>
+"nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>
+let g:tmux_navigator_save_on_switch = 2
+let g:tmux_navigator_disable_when_zoomed = 1
+
 
