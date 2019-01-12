@@ -309,3 +309,30 @@ map <Leader>vi :VimuxInspectRunner<CR>
 "nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 2
 let g:tmux_navigator_disable_when_zoomed = 1
+let mapleader = ","
+
+" map sort function to a key
+vnoremap <Leader>s :sort<CR>
+
+" easier moving of code blocks
+vnoremap < <gv " better indentation
+vnoremap > >gv " better indentation
+
+set smartcase
+set ignorecase
+" Quick quit command
+noremap <Leader>e :wquit<CR> " Quit current window"
+noremap <Leader>E :wqa!<CR> " Quit all windows"
+
+set tabstop = 4
+set softtabstop = 4
+set shiftwidth = 4
+set shiftround
+set expandtab
+
+
+
+
+
+
+
