@@ -37,15 +37,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 "  Plug 'cohama/lexima.vim'
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-commentary'
-  Plug 'jpalardy/vim-slim'
+  "Plug 'jpalardy/vim-slim'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'rking/ag.vim'
   "Rust Language
   Plug 'rust-lang/rust.vim'
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "   \ 'branch': 'next',
+  "  \ 'do': 'bash install.sh',
+  "  \ }
 
   Plug 'lepture/vim-jinja'
   " (Optional) Multi-entry selection UI.
