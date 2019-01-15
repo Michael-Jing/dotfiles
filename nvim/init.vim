@@ -324,9 +324,9 @@ set ignorecase
 noremap <Leader>e :wquit<CR> " Quit current window"
 noremap <Leader>E :wqa!<CR> " Quit all windows"
 
-set tabstop = 4
-set softtabstop = 4
-set shiftwidth = 4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set shiftround
 set expandtab
 
