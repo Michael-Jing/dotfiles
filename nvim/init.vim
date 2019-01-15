@@ -1,13 +1,10 @@
 set nocompatible
 set hidden
 set showtabline=0
-
 " Specify a directory for plugins
 set rtp+=~/.local/share/nvim/plugged
 call plug#begin('~/.local/share/nvim/plugged')
-
 " Add all your plugins here
-"-------------------=== Code/Project navigation ===-------------
   Plug 'chriskempson/base16-vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -19,8 +16,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
-
-  " Autocomplete
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-bufword'
@@ -30,70 +25,41 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2-racer'
   Plug 'vim-scripts/AutoClose'
 "   Plug 'Townk/vim-autoclose'
-
   " Formater
   Plug 'Chiel92/vim-autoformat'
   Plug 'junegunn/seoul256.vim'
 "  Plug 'cohama/lexima.vim'
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-commentary'
-  Plug 'jpalardy/vim-slim'
+  "Plug 'jpalardy/vim-slim'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'rking/ag.vim'
   "Rust Language
   Plug 'rust-lang/rust.vim'
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "   \ 'branch': 'next',
+  "  \ 'do': 'bash install.sh',
+  "  \ }
   Plug 'lepture/vim-jinja'
   " (Optional) Multi-entry selection UI.
-
-  Plug 'junegunn/fzf'
+  " Plug 'junegunn/fzf'
   Plug 'Michael-Jing/vim-tmux-navigator'
-
-  ""Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " debbugger "
+  " "Plug 'python-mode/python-mode'
+  Plug 'google/yapf'
+  Plug 'timothycrosley/isort'
+  Plug 'skywind3000/asyncrun.vim'
+  Plug 'kien/rainbow_parentheses.vim'
+  Plug 'tpope/vim-surround'
+  Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'christoomey/vim-system-copy'
+  Plug 'Shougo/denite.nvim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/vim-easy-align'
 
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
   " "Plug 'zchee/deoplete-jedi'
-
-"  Plug 'jiangmiao/auto-pairs'
-"Plug 'scrooloose/nerdtree'                " Project and file navigation
-"Plug 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
-"Plug 'neomake/neomake'                    " Asynchronous Linting and Make Framework
-"Plug 'Shougo/deoplete.nvim'               " Asynchronous Completion
-"Plug 'vim-ctrlspace/vim-ctrlspace'        " Tabs/Buffers/Fuzzy/Workspaces/Bookmarks
-"Plug 'mileszs/ack.vim'                    " Ag/Grep
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
-"" Uncomment if you want to use vim-airline over lightline
-"" Plug 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
-"" Plug 'vim-airline/vim-airline-themes'     " Themes for airline
-"Plug 'itchyny/lightline.vim'
-"Plug 'yuttie/comfortable-motion.vim'      " Smooth scrolling
-"Plug 'thaerkh/vim-indentguides'           " Visual representation of indents
-"Plug 'majutsushi/tagbar'                  " Class/module browser
-"Plug 'bling/vim-bufferline'               " Buffer-line vim - show list of buffers in command bar
-"
-
-"-------------------=== Snippets support ===------------------------
-" Plug 'honza/vim-snippets'                 " snippets repo
-" Plug 'Raimondi/delimitMate'               " Auto-close brackets
-
-"-------------------=== Languages support ===-----------------------
-" Plug 'scrooloose/nerdcommenter'           " Easy code documentation
-" Plug 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
-
-"-------------------=== Python ===----------------------------------
-" Plug 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
-" Plug 'jmcantrell/vim-virtualenv'
-
-"-------------------=== Go ===---------------------------------------
-" Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-
 " Initialize plugin system
 call plug#end()
 
@@ -119,7 +85,7 @@ let g:LanguageClient_serverCommands = {
     \ }
 noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
-noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+" noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
 noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
 
 
@@ -163,11 +129,17 @@ imap <expr> <CR> ((col(".") != col("$") - 1) ? "\<CR>" : "\<Esc>$a")
 " "autocmd FileType python map <buffer> <CR> <Esc>$o
 
 " ale
+let g:ale_fix_on_save = 1
+let b:ale_linters = ['flake8']
 let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\ 'python' : [
+\       'remove_trailing_lines',
+\       'isort',
+\       'yapf'
+\    ]
 \}
 
-let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 " Airline will display ale errer message
 let g:ariline#extensions#ale#enabled = 1
@@ -189,7 +161,7 @@ let g:slim_python_ipython = 1
 let g:slim_target = "neovim"
 
 " ctrlp configuration
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<c-l>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -244,7 +216,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 
-map <C-b> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 
 " close vim if the only window left open is a NERDTree"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -253,23 +225,19 @@ map <F5> :call CompileRunGcc()<CR>
     func! CompileRunGcc()
         exec "w"
         if &filetype == 'c'
-            exec "!g++ % -o %<"
-            exec "!time ./%<"
+            exec "AsyncRun! g++ % -o %<; time ./%<"
         elseif &filetype == 'cpp'
-            exec "!g++ % -o %<"
-            exec "!time ./%<"
+            exec "AsyncRun! g++ % -o %<; time ./%<"
         elseif &filetype == 'java'
-            exec "!javac %"
-            exec "!time java %<"
+            exec "AsyncRun! javac %; time java %<"
         elseif &filetype == 'sh'
-            :!time bash %
+            :AsyncRun time bash %
         elseif &filetype == 'python'
-            exec "!time python %"
+            exec "AsyncRun! time python %"
         elseif &filetype == 'html'
-            exec "!firefox % &"
+            exec "AsyncRun! firefox % &"
         elseif &filetype == 'go'
-    "        exec "!go build %<"
-            exec "!time go run %"
+    "       exec "AsyncRun! go build %<; time go run %"
         elseif &filetype == 'mkd'
             exec "!~/.vim/markdown.pl % > %.html &"
             exec "!firefox %.html &"
@@ -295,21 +263,11 @@ map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
 map <Leader>vi :VimuxInspectRunner<CR>
-"nnoremap <C-T> <C-W><C-J>
-"nnoremap <C-N> <C-W><C-K>
-"nnoremap <C-S> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
 
-" Tmux vim navigation
-"let g:tmux_navigator_no_mappings = 1
-"nnoremap <silent> {c-h} :TmuxNavigateLeft<cr>
-"nnoremap <silent> {c-t} :TmuxNavigateDown<cr>
-"nnoremap <silent> {c-n} :TmuxNavigateUp<cr>
-"nnoremap <silent> {c-s} :TmuxNavigateRight<cr>
-"nnoremap <silent> {c-\} :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 2
 let g:tmux_navigator_disable_when_zoomed = 1
 let mapleader = ","
+let maplocalleader = "\\"
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
@@ -332,7 +290,52 @@ set expandtab
 
 
 
+" Python mode configuration"
+let g:pymode_python = 'python3'
+hi pythonSelf ctermfg=174 guifg=#6094DB cterm=bold gui=bold
+autocmd FileType python nnoremap <LocalLeader>g :call RopeGotoDefinition()<CR>
+
+" format code
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
+
+"pytho repl"
+autocmd FileType python nnoremap <LocalLeader>r :REPLToggle<CR>
 
 
+"Auto format"
+nnoremap <F6> :Autoformat<CR>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
+let g:rbpt_colorpairs = [
+                        \ ['brown',       'RoyalBlue3'],
+                        \ ['Darkblue',    'SeaGreen3'],
+                        \ ['darkgray',    'DarkOrchid3'],
+                        \ ['darkgreen',   'firebrick3'],
+                        \ ['darkcyan',    'RoyalBlue3'],
+                        \ ['darkred',     'SeaGreen3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['brown',       'firebrick3'],
+                        \ ['gray',        'RoyalBlue3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['Darkblue',    'firebrick3'],
+                        \ ['darkgreen',   'RoyalBlue3'],
+                        \ ['darkcyan',    'SeaGreen3'],
+                        \ ['darkred',     'DarkOrchid3'],
+                        \ ['red',         'firebrick3'],
+                        \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
+" Easy align interactive"
+vnoremap <silent> <Enter> :EasyAlign<CR>
+
+" split panes to right and bottom
+set splitbelow
+set splitright
