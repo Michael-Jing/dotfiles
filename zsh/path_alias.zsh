@@ -6,3 +6,6 @@ export PATH="$HOME/bin:$PATH"
 
 
 source "$HOME/apps/python/bin/activate"
+
+
+alias ssh="zssh -Y"
