@@ -56,6 +56,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/vim-easy-align'
+  Plug 'lukhio/vim-mapping-conflicts'
 
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
