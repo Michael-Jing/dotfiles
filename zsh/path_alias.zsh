@@ -6,3 +6,5 @@ export PATH="$HOME/bin:$PATH"
 
 
 source "$HOME/apps/python/bin/activate"
+alias vim=nvim
+alias vi=nvim
