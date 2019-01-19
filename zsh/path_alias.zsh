@@ -26,3 +26,6 @@ alias think='tickle +1d'
 
 
 export PS1='$(task +in +PENDING count) '$PS1
+
+# added by Anaconda3 4.3.1 installer
+export PATH="/home/jyq/anaconda3/bin:$PATH"
