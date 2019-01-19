@@ -6,6 +6,11 @@ export PATH="$HOME/bin:$PATH"
 
 
 source "$HOME/apps/python/bin/activate"
+alias vim=nvim
+alias vi=nvim
+
+
+alias ssh="zssh -Y"
 export PATH="$PATH:~/bin/"
 export PATH=$PATH:~/.linuxbrew/Cellar/parallel/20170622/bin/
 export PATH=$PATH:~/apps/anaconda3/bin/
@@ -29,3 +34,9 @@ export PS1='$(task +in +PENDING count) '$PS1
 
 # added by Anaconda3 4.3.1 installer
 export PATH="/home/jyq/anaconda3/bin:$PATH"
+#if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  POWERLINE_ZSH_CONTINUATION=1
+  POWERLINE_ZSH_SELECT=1
+  . ~/apps/python/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+#fi
