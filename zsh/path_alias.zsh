@@ -40,3 +40,8 @@ export PATH="/home/jyq/anaconda3/bin:$PATH"
   POWERLINE_ZSH_SELECT=1
   . ~/apps/python/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 #fi
+
+export FZF_DEFAULT_COMMAND="ag -g"
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+

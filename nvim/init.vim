@@ -57,6 +57,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/vim-easy-align'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'benmills/vimux'
+  Plug 'julienr/vimux-pyutils'
 
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
