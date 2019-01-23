@@ -41,7 +41,8 @@ export PATH="/home/jyq/anaconda3/bin:$PATH"
   . ~/apps/python/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 #fi
 
-export FZF_DEFAULT_COMMAND="ag -g"
-export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_ALT_C_COMMAND="fd --type d"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
