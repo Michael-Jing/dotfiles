@@ -220,4 +220,4 @@ bar {
     #            inactive_workspace $gray1 $gray1 #AAAAAA
     #    }
 }
-exec --no-startup-id "feh --bg-scale ~/.dotfiles/806506.jpg"
+exec --no-startup-id "feh --randomize --bg-fill ~/.wallpaper/*"
