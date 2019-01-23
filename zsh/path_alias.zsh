@@ -6,6 +6,8 @@ export PATH="$HOME/bin:$PATH"
 
 
 source "$HOME/apps/python/bin/activate"
+alias vim=nvim
+alias vi=nvim
 
 
 alias ssh="zssh -Y"
@@ -29,6 +31,9 @@ alias think='tickle +1d'
 
 
 export PS1='$(task +in +PENDING count) '$PS1
+
+# added by Anaconda3 4.3.1 installer
+export PATH="/home/jyq/anaconda3/bin:$PATH"
 #if [ -f `which powerline-daemon` ]; then
   powerline-daemon -q
   POWERLINE_ZSH_CONTINUATION=1

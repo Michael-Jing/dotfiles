@@ -56,7 +56,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/vim-easy-align'
-  Plug 'lukhio/vim-mapping-conflicts'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -126,7 +126,7 @@ augroup NCM2
 augroup END
 
 " map enter to go the next line first"$
-imap <expr> <CR> ((col(".") != col("$") - 1) ? "\<CR>" : "\<Esc>$a")
+imap <expr> <CR> ((col(".") == col("$")) ? "\<CR>" : "\<Esc>$a")
 " "autocmd FileType python map <buffer> <CR> <Esc>$o
 
 " ale
@@ -145,8 +145,8 @@ let g:ale_completion_enabled = 1
 " Airline will display ale errer message
 let g:ariline#extensions#ale#enabled = 1
 " navigate between errors quickly
-nmap <silent> <C-t> <Plug>(ale_previous_wrap)
-nmap <silent> <C-H> <Plug>(ale_next_wrap)
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:ale_set_quickfix = 1
 let g:ale_open_list = 1
 
