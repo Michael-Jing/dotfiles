@@ -340,3 +340,4 @@ vnoremap <silent> <Enter> :EasyAlign<CR>
 " split panes to right and bottom
 set splitbelow
 set splitright
+hi Normal guibg=NONE ctermbg=NONE
