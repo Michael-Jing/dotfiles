@@ -31,9 +31,18 @@ alias think='tickle +1d'
 
 
 export PS1='$(task +in +PENDING count) '$PS1
+
+# added by Anaconda3 4.3.1 installer
+export PATH="/home/jyq/anaconda3/bin:$PATH"
 #if [ -f `which powerline-daemon` ]; then
   powerline-daemon -q
   POWERLINE_ZSH_CONTINUATION=1
   POWERLINE_ZSH_SELECT=1
   . ~/apps/python/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 #fi
+
+export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_ALT_C_COMMAND="fd --type d"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+
