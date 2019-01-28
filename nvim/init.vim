@@ -32,7 +32,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-commentary'
   "Plug 'jpalardy/vim-slim'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'rking/ag.vim'
   "Rust Language
   Plug 'rust-lang/rust.vim'
@@ -57,6 +56,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/vim-easy-align'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'benmills/vimux'
+  Plug 'julienr/vimux-pyutils'
 
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -162,28 +164,32 @@ let g:slim_python_ipython = 1
 let g:slim_target = "neovim"
 
 " ctrlp configuration
-let g:ctrlp_map = '<c-l>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+"let g:ctrlp_map = '<c-l>'
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_working_path_mode = 'ra'
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"  \ 'file': '\v\.(exe|so|dll)$',
+"  \ 'link': 'some_bad_symbolic_links',
+"  \ }
+
+nmap <C-l> :Files<CR>
+nmap <C-e> :Buffers<CR>
+let g:fzf_action = { 'ctrl-e': 'edit'}
 
 " The Silver Searcher
-if executable('ag')
+""if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+""  set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+""  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+""  let g:ctrlp_use_caching = 0
+" "endif
 
 " bind K to grep word under cursor
 " nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -340,3 +346,4 @@ vnoremap <silent> <Enter> :EasyAlign<CR>
 " split panes to right and bottom
 set splitbelow
 set splitright
+hi Normal guibg=NONE ctermbg=NONE

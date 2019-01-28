@@ -187,8 +187,10 @@ exec --no-startup-id "xrandr --output HDMI-1 --above eDP-1"
 # exec --no-startup-id "xrandr --output HDMI3 --right-of eDP1 --auto --panning 3840x2160+2880+0 --scale 2x2"
 # bindsym $mod+m exec --no-startup-id "xrandr --output eDP-1 --auto --pos 0x2880 --output HDMI-3 --auto --scale 2x2 --pos 0x0 --fb 5120x4680"
 # bindsym $mod+c exec --no-startup-id "xrandr --output HDMI3 --off && xrandr --output DP1 --off && sleep 3 && xrandr --output eDP1 --auto --pos 0x1800 --output DP1 --mode 1440x900 --scale 2x2 --pos 0x0 --fb 2880x3600"
-bindsym $mod+c exec --no-startup-id "xrandr --output HDMI-3 --off"
+# bindsym $mod+c exec --no-startup-id "xrandr --output HDMI-3 --off"
 # exec --no-startup-id "/home/michael/apps/cerebro-0.3.0-x86_64.AppImage"
+bindsym $mod+m exec --no-startup-id "xrandr --output HDMI-1 --above eDP-1 --rotate left --auto"
+bindsym $mod+c exec --no-startup-id "xrandr --output HDMI-1 --above eDP-1 --auto--rotate normal"
 exec --no-startup-id nm-applet
 bindsym $mod+r mode "launcher"
 mode "launcher" {
@@ -206,15 +208,16 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 20" 
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 20"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 20"
 bar {
 
         status_command i3status
-	#colors { 
+	#colors {
     #            statusline #AAAAAA
     #            background #333333
     #            focused_workspace $gray2 $gray2 #FFFFFF
     #            inactive_workspace $gray1 $gray1 #AAAAAA
     #    }
 }
+exec --no-startup-id "feh --randomize --bg-fill ~/.wallpaper/*"
