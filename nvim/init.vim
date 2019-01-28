@@ -126,7 +126,7 @@ augroup NCM2
 augroup END
 
 " map enter to go the next line first"$
-imap <expr> <CR> ((col(".") == col("$")) ? "\<CR>" : "\<Esc>$a")
+imap <expr> <c-n> ((col(".") == col("$")) ? "\<CR>" : "\<Esc>$a")
 " "autocmd FileType python map <buffer> <CR> <Esc>$o
 
 " ale
