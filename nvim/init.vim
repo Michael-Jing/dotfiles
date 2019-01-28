@@ -132,8 +132,8 @@ imap <expr> <CR> ((col(".") == col("$")) ? "\<CR>" : "\<Esc>$a")
 " "autocmd FileType python map <buffer> <CR> <Esc>$o
 
 " ale
+let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
-let b:ale_linters = ['flake8']
 let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \ 'python' : [
@@ -143,7 +143,6 @@ let g:ale_fixers = {
 \    ]
 \}
 
-let g:ale_completion_enabled = 1
 " Airline will display ale errer message
 let g:ariline#extensions#ale#enabled = 1
 " navigate between errors quickly
