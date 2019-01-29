@@ -199,8 +199,8 @@ mode "launcher" {
     bindsym f exec firefox
     bindsym n exec nixnote2
     bindsym p exec Pycharm
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+Shift+minus move scratchpad
@@ -208,8 +208,10 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 20"
-bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 20"
+bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 5"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 5"
+
+exec --no-startup-id "feh --randomize --bg-fill ~/.wallpaper/*"
 bar {
 
         status_command i3status
@@ -220,4 +222,3 @@ bar {
     #            inactive_workspace $gray1 $gray1 #AAAAAA
     #    }
 }
-exec --no-startup-id "feh --randomize --bg-fill ~/.wallpaper/*"
