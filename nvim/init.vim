@@ -346,3 +346,4 @@ vnoremap <silent> <Enter> :EasyAlign<CR>
 set splitbelow
 set splitright
 hi Normal guibg=NONE ctermbg=NONE
+set foldmethod=indent
