@@ -12,40 +12,23 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Yggdroot/indentLine'
   " syntax check
   Plug 'w0rp/ale'
-"nerd tree"
-  Plug 'scrooloose/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
   Plug 'ncm2/ncm2-jedi'
   Plug 'ncm2/ncm2-tmux'
-  Plug 'ncm2/ncm2-racer'
   Plug 'vim-scripts/AutoClose'
-"   Plug 'Townk/vim-autoclose'
   " Formater
   Plug 'Chiel92/vim-autoformat'
   Plug 'junegunn/seoul256.vim'
-"  Plug 'cohama/lexima.vim'
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-commentary'
-  "Plug 'jpalardy/vim-slim'
   Plug 'rking/ag.vim'
-  "Rust Language
-  Plug 'rust-lang/rust.vim'
-  " Plug 'autozimu/LanguageClient-neovim', {
-  "   \ 'branch': 'next',
-  "  \ 'do': 'bash install.sh',
-  "  \ }
   Plug 'lepture/vim-jinja'
-  " (Optional) Multi-entry selection UI.
-  " Plug 'junegunn/fzf'
   Plug 'Michael-Jing/vim-tmux-navigator'
-  " "Plug 'python-mode/python-mode'
   Plug 'google/yapf'
-  Plug 'timothycrosley/isort'
+  ""Plug 'timothycrosley/isort'
   Plug 'skywind3000/asyncrun.vim'
   Plug 'kien/rainbow_parentheses.vim'
   Plug 'tpope/vim-surround'
@@ -59,6 +42,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'benmills/vimux'
   Plug 'julienr/vimux-pyutils'
+  Plug 'davidhalter/jedi-vim'
+  Plug 'metalelf0/supertab'
+  Plug 'mkitt/tabline.vim'
 
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -345,5 +331,26 @@ vnoremap <silent> <Enter> :EasyAlign<CR>
 " split panes to right and bottom
 set splitbelow
 set splitright
+
+"transparency background"
 hi Normal guibg=NONE ctermbg=NONE
+
+" fold by default"
 set foldmethod=indent
+
+" jedi configuration"
+" let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#completions_enabled = 0
+
+" tabline config"
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
