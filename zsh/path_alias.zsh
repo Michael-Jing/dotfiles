@@ -10,7 +10,8 @@ alias vim=nvim
 alias vi=nvim
 
 
-alias ssh="zssh -Y"
+alias ssh="ssh -Y"
+alias zssh="zssh -Y"
 export PATH="$PATH:~/bin/"
 export PATH=$PATH:~/.linuxbrew/Cellar/parallel/20170622/bin/
 export PATH=$PATH:~/apps/anaconda3/bin/
