@@ -190,7 +190,7 @@ exec --no-startup-id "xrandr --output HDMI-1 --above eDP-1"
 # bindsym $mod+c exec --no-startup-id "xrandr --output HDMI-3 --off"
 # exec --no-startup-id "/home/michael/apps/cerebro-0.3.0-x86_64.AppImage"
 bindsym $mod+m exec --no-startup-id "xrandr --output HDMI-1 --above eDP-1 --rotate left --auto"
-bindsym $mod+c exec --no-startup-id "xrandr --output HDMI-1 --above eDP-1 --auto--rotate normal"
+bindsym $mod+c exec --no-startup-id "xrandr --output HDMI-1 --above eDP-1 --auto --rotate normal"
 exec --no-startup-id nm-applet
 bindsym $mod+r mode "launcher"
 mode "launcher" {

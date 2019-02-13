@@ -333,7 +333,7 @@ set splitbelow
 set splitright
 
 "transparency background"
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 
 " fold by default"
 set foldmethod=indent
