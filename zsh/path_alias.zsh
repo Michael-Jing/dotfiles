@@ -65,3 +65,5 @@ function pom(){
     sleep 300
     light -S $brightness
 }
+
+alias lt="leetcode"
