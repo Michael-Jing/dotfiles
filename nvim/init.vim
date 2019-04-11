@@ -19,6 +19,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2-jedi'
   Plug 'ncm2/ncm2-tmux'
   Plug 'vim-scripts/AutoClose'
+  " Plug 'Raimondi/delimitMate'
   " Formater
   Plug 'Chiel92/vim-autoformat'
   Plug 'junegunn/seoul256.vim'
@@ -93,7 +94,6 @@ set nowritebackup
 
 " Search configuration
 set ignorecase
-set smartcase
 
 " Tab and Indent configuration
 set expandtab
@@ -203,7 +203,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " Nerdtree "
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
@@ -270,6 +270,7 @@ vnoremap > >gv " better indentation
 
 set smartcase
 set ignorecase
+set smartindent
 " Quick quit command
 noremap <Leader>e :wquit<CR> " Quit current window"
 noremap <Leader>E :wqa!<CR> " Quit all windows"
@@ -333,10 +334,10 @@ set splitbelow
 set splitright
 
 "transparency background"
-hi Normal guibg=NONE ctermbg=NONE
+" "hi Normal guibg=NONE ctermbg=NONE
 
 " fold by default"
-set foldmethod=indent
+" set foldmethod=indent
 
 " jedi configuration"
 " let g:jedi#use_splits_not_buffers = "right"
@@ -354,3 +355,8 @@ let g:jedi#completions_enabled = 0
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
+" auto  indent and open new line
+" let delimitMate_expand_cr = 1
+let g:python3_host_prog = "/home/michael/anaconda3/bin/python"
+let g:python2_host_prog = "/usr/bin/python2"
