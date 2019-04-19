@@ -214,31 +214,33 @@ map <F3> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 map <F5> :call CompileRunGcc()<CR>
-    func! CompileRunGcc()
-        exec "w"
-        if &filetype == 'c'
-            exec "AsyncRun! g++ % -o %<; time ./%<"
-        elseif &filetype == 'cpp'
-            exec "AsyncRun! g++ % -o %<; time ./%<"
-        elseif &filetype == 'java'
-            exec "AsyncRun! javac %; time java %<"
-        elseif &filetype == 'sh'
-            :AsyncRun time bash %
-        elseif &filetype == 'python'
-            exec "AsyncRun! time python %"
-        elseif &filetype == 'html'
-            exec "AsyncRun! firefox % &"
-        elseif &filetype == 'go'
-    "       exec "AsyncRun! go build %<; time go run %"
-        elseif &filetype == 'mkd'
-            exec "!~/.vim/markdown.pl % > %.html &"
-            exec "!firefox %.html &"
-        endif
-    endfunc
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "AsyncRun! g++ % -o %<; time ./%<"
+    elseif &filetype == 'cpp'
+        exec "AsyncRun! g++ % -o %<; time ./%<"
+    elseif &filetype == 'java'
+        exec "AsyncRun! javac %; time java %<"
+    elseif &filetype == 'sh'
+        :AsyncRun time bash %
+    elseif &filetype == 'python'
+        exec "AsyncRun! time python %"
+    elseif &filetype == 'html'
+        exec "AsyncRun! firefox % &"
+    elseif &filetype == 'go'
+        "       exec "AsyncRun! go build %<; time go run %"
+    elseif &filetype == 'mkd'
+        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!firefox %.html &"
+    endif
+endfunc
 
+autocmd InsertLeave * :silent !xmodmap ~/.dotfiles/xmodmap/norm
+autocmd InsertEnter * :silent !xmodmap ~/.dotfiles/xmodmap/num
 aug QFClose
-  au!
-  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+    au!
+    au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
 
 " enable basic auto close rules for lexima
