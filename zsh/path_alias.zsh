@@ -12,7 +12,7 @@ export PATH="$PATH:~/bin/"
 export PATH=$PATH:~/apps/anaconda3/bin/
 export PATH=~/apps/anaconda3/bin:$PATH
 export PATH=$PATH:/usr/lib/go-1.9/bin
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.gem/ruby/2.6.0/bin/:$PATH
 # alias geth="geth-173"
 
 alias in='task add +in'
@@ -55,7 +55,7 @@ function pom(){
 }
 
 alias lt="leetcode"
-alias ltl="leetcode list -q HDL"
-alias lts="leetcode show -gx"
+alias ltl="leetcode list -q DL"
+alias lts="leetcode show -g"
 alias ltt="leetcode test"
 alias ltsb="leetcode submit"

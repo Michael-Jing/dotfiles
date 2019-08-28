@@ -47,6 +47,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'metalelf0/supertab'
   Plug 'mkitt/tabline.vim'
   Plug 'scrooloose/nerdtree'
+  Plug 'gabrielelana/vim-markdown'
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
   " "Plug 'zchee/deoplete-jedi'
@@ -114,7 +115,7 @@ augroup NCM2
 augroup END
 
 " map enter to go the next line first"$
-imap <expr> <c-n> ((col(".") == col("$")) ? "\<CR>" : "\<Esc>$a")
+imap <expr> <C-t> ((col(".") == col("$")) ? "\<CR>" : "\<Esc>$a")
 " "autocmd FileType python map <buffer> <CR> <Esc>$o
 
 " ale
@@ -231,13 +232,13 @@ func! CompileRunGcc()
     elseif &filetype == 'go'
         "       exec "AsyncRun! go build %<; time go run %"
     elseif &filetype == 'mkd'
-        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!~/bin/Markdown.pl % > %.html &"
         exec "!firefox %.html &"
     endif
 endfunc
 
-autocmd InsertLeave * :silent !xmodmap ~/.dotfiles/xmodmap/norm
-autocmd InsertEnter * :silent !xmodmap ~/.dotfiles/xmodmap/num
+" "autocmd InsertLeave * :silent !xmodmap ~/.dotfiles/xmodmap/norm
+" "autocmd InsertEnter * :silent !xmodmap ~/.dotfiles/xmodmap/num
 aug QFClose
     au!
     au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif

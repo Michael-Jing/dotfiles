@@ -1,0 +1,11 @@
+set history-max-items=30000
+set hint-keys=aoeuidhtnspyfgccrl
+nnoremap H <C-O>
+nnoremap L <C-I>
+nnoremap qq :q<CR>
+shortcut-add g=https://www.google.com/search?hl=en&q=$0
+shortcut-add b=https://cn.bing.com/search?q=$0
+shortcut-add a=https://wiki.archlinux.org/index.php?title=Special%%3ASearch&search=$0&go=Go
+set font-size=13
+set monospace-font-size=13
+set minimum-font-size=13
