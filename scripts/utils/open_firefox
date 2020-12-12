@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Detect MacOS
+[[ "${OSTYPE:-$(uname -s)}" =~ (D|d)arwin ]] && {
+    # Detects if iTerm2 is running
+    /Applications/Firefox.app/Contents/MacOS/firefox-bin
+    #    open -a "/Applications/iTerm.app"
+}
