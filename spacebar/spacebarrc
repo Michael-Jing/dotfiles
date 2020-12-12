@@ -18,6 +18,6 @@ spacebar -m config power_icon_strip   Ôàû ÔÉß
 spacebar -m config space_icon         ÔÑâ
 spacebar -m config clock_icon         ÔÄó
 spacebar -m config dnd_icon           ÔÜÜ
-spacebar -m config clock_format       "%d/%mmm/%y %R"
+spacebar -m config clock_format       "%d/%m/%y %R"
 
 echo "spacebar configuration loaded.."
