@@ -1,4 +1,3 @@
-export PATH="/home/michael/apps/kitty/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 
@@ -8,10 +7,6 @@ alias vi=nvim
 
 alias ssh="ssh -Y"
 alias zssh="zssh -Y"
-export PATH="$PATH:~/bin/"
-export PATH=$PATH:~/apps/anaconda3/bin/
-export PATH=~/apps/anaconda3/bin:$PATH
-export PATH=$PATH:/usr/lib/go-1.9/bin
 export PATH=$HOME/.cargo/bin:$HOME/.gem/ruby/2.6.0/bin/:$PATH
 # alias geth="geth-173"
 
@@ -28,7 +23,6 @@ alias think='tickle +1d'
 export PS1='$(task +in +PENDING count) '$PS1
 
 # added by Anaconda3 4.3.1 installer
-export PATH="/home/jyq/anaconda3/bin:$PATH"
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_ALT_C_COMMAND="fd --type d"
@@ -54,8 +48,3 @@ function pom(){
     light -S $brightness
 }
 
-alias lt="leetcode"
-alias ltl="leetcode list -q DL"
-alias lts="leetcode show -g"
-alias ltt="leetcode test"
-alias ltsb="leetcode submit"
