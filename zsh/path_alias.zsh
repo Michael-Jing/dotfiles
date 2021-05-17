@@ -1,5 +1,6 @@
 export PATH="$HOME/bin:$PATH"
-
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/Android/Sdk/platform-tools/"
 
 alias vim=nvim
 alias vi=nvim
@@ -37,7 +38,7 @@ function countdown(){
    done
 }
 
-alias pomo="sleep 1500 && i3lock -c 212121"
+alias pomo="sleep 1500 && swaylock -f -c 000000"
 function pom(){   
     timew start
     sleep 1500

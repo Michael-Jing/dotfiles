@@ -8,8 +8,12 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'chriskempson/base16-vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'skywind3000/asyncrun.vim'  " If you prefer async behaviour
+  Plug 'jremmen/vim-ripgrep'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
+  Plug 'dart-lang/dart-vim-plugin'
+
   " syntax check
   Plug 'w0rp/ale'
   Plug 'ncm2/ncm2'
@@ -48,6 +52,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'mkitt/tabline.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'gabrielelana/vim-markdown'
+  Plug 'OmniSharp/omnisharp-vim'
+
   " "Plug 'idanarye/vim-vebugger'
   " "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
   " "Plug 'zchee/deoplete-jedi'
@@ -182,7 +188,7 @@ let g:fzf_action = { 'ctrl-e': 'edit'}
 
 " bind \ (backward slash) to grep shortcut
 " "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+nnoremap \ :Rg<SPACE>
 
  " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -363,3 +369,7 @@ hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 " let delimitMate_expand_cr = 1
 let g:python3_host_prog = "/home/michael/anaconda3/bin/python"
 let g:python2_host_prog = "/usr/bin/python2"
+
+" dart configuration"
+let dart_html_in_string=v:true
+let g:dart_format_on_save = 1
